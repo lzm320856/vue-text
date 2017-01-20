@@ -1,0 +1,38 @@
+body{
+  background:#ccc;
+}
+.container{
+  background:#fff;
+  width:500px;
+  margin: 0 auto;
+}
+
+.isFinished{
+  text-decoration:line-through;
+  color:#ccc;
+}
+
+.item{
+  font-size:18px;
+  padding-left:30px;
+}
+ul{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.right{
+  float:right;
+}
+li:nth-child(odd){
+  background:#eee;
+}
+.list{
+  position: relative;
+}
+.time{
+  position: absolute;
+  bottom: 0;
+  right: 70px;
+  color: #ccc;
+  font-size: 8px;
+}
