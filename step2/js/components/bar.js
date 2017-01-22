@@ -3,7 +3,8 @@
  */
 import Vue from "vue";
 import Store from "./storage";
-import AV from 'leancloud-storage'
+import AV from 'leancloud-storage';
+import Remote from "./remote"
 
 export default function bar() {
   var APP_ID = '9bgJAQDm5kh4yoPfOPj44CR3-gzGzoHsz';
@@ -25,15 +26,15 @@ export default function bar() {
         username:"",
         password:""
       },
-      list:Store.fectch("todos") || [],
-      inputItem: Store.fectch("input") || "",
+      list: [],
+      inputItem: Store.fetch("input") || "",
       signType:"signIn",
       currentUser:null
     },
     watch:{
       list:{
         handler:function (items) {
-          Store.save("todos",items);
+          Remote.remoteSave(items);
         },
         deep:true
       },
@@ -46,6 +47,7 @@ export default function bar() {
     },
     created:function(){
       this.currentUser = this.getCurrentUser();
+        Remote.remoteFetch(this.list);
     },
     methods:{
       addItem:function(){
@@ -86,6 +88,7 @@ export default function bar() {
       signIn:function () {
         AV.User.logIn(this.formData.username, this.formData.password).then((loginedUser) => {
           this.currentUser = this.getCurrentUser();
+          window.location.reload();
         }, function (error) {
           alert("请输入正确的用户名/密码")
         });
@@ -104,7 +107,7 @@ export default function bar() {
         }else{
           return null;
         }
-      },
+      }
     }
   });
 };

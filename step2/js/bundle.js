@@ -52,7 +52,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(10); /**
+	__webpack_require__(11); /**
 	                             * Created by zm on 2017/1/10.
 	                             */
 
@@ -82,8 +82,15 @@
 
 	var _leancloudStorage2 = _interopRequireDefault(_leancloudStorage);
 
+	var _remote = __webpack_require__(10);
+
+	var _remote2 = _interopRequireDefault(_remote);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Created by zm on 2017/1/10.
+	 */
 	function bar() {
 	  var APP_ID = '9bgJAQDm5kh4yoPfOPj44CR3-gzGzoHsz';
 	  var APP_KEY = 'ijNAaaBmGkrDV8DUHuDhXxGd';
@@ -104,15 +111,15 @@
 	        username: "",
 	        password: ""
 	      },
-	      list: _storage2.default.fectch("todos") || [],
-	      inputItem: _storage2.default.fectch("input") || "",
+	      list: [],
+	      inputItem: _storage2.default.fetch("input") || "",
 	      signType: "signIn",
 	      currentUser: null
 	    },
 	    watch: {
 	      list: {
 	        handler: function handler(items) {
-	          _storage2.default.save("todos", items);
+	          _remote2.default.remoteSave(items);
 	        },
 	        deep: true
 	      },
@@ -125,6 +132,7 @@
 	    },
 	    created: function created() {
 	      this.currentUser = this.getCurrentUser();
+	      _remote2.default.remoteFetch(this.list);
 	    },
 	    methods: {
 	      addItem: function addItem() {
@@ -168,6 +176,7 @@
 
 	        _leancloudStorage2.default.User.logIn(this.formData.username, this.formData.password).then(function (loginedUser) {
 	          _this2.currentUser = _this2.getCurrentUser();
+	          window.location.reload();
 	        }, function (error) {
 	          alert("请输入正确的用户名/密码");
 	        });
@@ -192,10 +201,7 @@
 	      }
 	    }
 	  });
-	} /**
-	   * Created by zm on 2017/1/10.
-	   */
-	;
+	};
 
 /***/ },
 /* 2 */
@@ -8971,7 +8977,7 @@
 	 * Created by zm on 2017/1/17.
 	 */
 	exports.default = {
-	    fectch: function fectch(key) {
+	    fetch: function fetch(key) {
 	        return JSON.parse(window.localStorage.getItem(key));
 	    },
 	    save: function save(key, items) {
@@ -24982,13 +24988,66 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _leancloudStorage = __webpack_require__(5);
+
+	var _leancloudStorage2 = _interopRequireDefault(_leancloudStorage);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	    remoteSave: function remoteSave(items) {
+	        var AVTodo = _leancloudStorage2.default.Object.extend("todos");
+	        var avTodo = new AVTodo();
+	        avTodo.set("items", items);
+	        //设置ACL
+	        var acl = new _leancloudStorage2.default.ACL();
+	        acl.setReadAccess(_leancloudStorage2.default.User.current(), true);
+	        acl.setWriteAccess(_leancloudStorage2.default.User.current(), true);
+	        avTodo.setACL(acl);
+
+	        return avTodo.save().then(function (todo) {
+	            var id = todo.id,
+	                createdAt = todo.createdAt,
+	                updatedAt = todo.updatedAt;
+
+	            return { id: id, createdAt: createdAt, updatedAt: updatedAt };
+	        }, function (error) {
+	            console.log(error);
+	        });
+	    },
+	    remoteFetch: function remoteFetch(list) {
+	        var query = new _leancloudStorage2.default.Query("todos");
+	        query.find().then(function (results) {
+	            var result = results[results.length - 1].attributes.items;
+	            for (var i = 0; i < result.length; i++) {
+	                list.push(result[i]);
+	            }
+	        }, function (error) {
+	            console.log(error);
+	        });
+	    }
+	}; /**
+	    * Created by zm on 2017/1/22.
+	    */
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(12);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -25005,10 +25064,10 @@
 	}
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(13)();
 	// imports
 
 
@@ -25019,7 +25078,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/*
@@ -25075,7 +25134,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

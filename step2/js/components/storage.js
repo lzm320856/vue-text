@@ -2,7 +2,7 @@
  * Created by zm on 2017/1/17.
  */
 export default {
-    fectch:function (key){
+    fetch:function (key){
         return JSON.parse(window.localStorage.getItem(key))
     },
     save:function (key,items) {
