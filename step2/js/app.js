@@ -4,7 +4,8 @@
 import Bar from "./components/bar";
 
 require("../css/page.css");
-
+require("../css/page.less");
+require("../iconfont/iconfont.css");
 Bar();
 
 

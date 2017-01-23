@@ -14,6 +14,22 @@ export default function bar() {
     appKey: APP_KEY
   });
 
+  var filters = {
+    all: function (items) {
+      return items;
+    },
+    active: function (items) {
+      return items.filter(function (item) {
+        return !item.isFinished;
+      });
+    },
+    completed: function (items) {
+      return items.filter(function (item) {
+        return item.isFinished;
+      });
+    }
+  };
+
   var todoList = new Vue({
     el:"#todos",
     data:{
@@ -29,6 +45,7 @@ export default function bar() {
       list: [],
       inputItem: Store.fetch("input") || "",
       signType:"signIn",
+      visibility:"all",
       currentUser:null
     },
     watch:{
@@ -74,6 +91,18 @@ export default function bar() {
       finished:function(item){
         item.isFinished = !item.isFinished;
       },
+      changeSignType:function () {
+        this.signType == "signUp" ? this.signType="signIn" : this.signType="signUp";
+      },
+      selectAll:function () {
+        this.visibility = 'all';
+      },
+      selectDone:function () {
+        this.visibility = 'completed';
+      },
+      selectTodo:function () {
+        this.visibility = 'active';
+      },
       signUp:function () {
         let user = new AV.User();
         user.setUsername(this.formData.username);
@@ -107,6 +136,11 @@ export default function bar() {
         }else{
           return null;
         }
+      }
+    },
+    computed:{
+      filteredTodos:function () {
+        return filters[this.visibility](this.list);
       }
     }
   });
