@@ -25110,7 +25110,7 @@
 
 
 	// module
-	exports.push([module.id, "[v-cloak]{\r\n    display: none;\r\n}", ""]);
+	exports.push([module.id, "[v-cloak]{\r\n    display: none !important;\r\n}", ""]);
 
 	// exports
 
