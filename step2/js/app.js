@@ -2,9 +2,11 @@
  * Created by zm on 2017/1/10.
  */
 import Bar from "./components/bar";
+import "../css/style.css"
+import "../css/page.less"
+import "../iconfont/iconfont.css"
 
-require("../css/page.less");
-require("../iconfont/iconfont.css");
+
 Bar();
 
 
