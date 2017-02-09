@@ -5,7 +5,10 @@ var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./js/app.js",
+    entry: {
+        bundle:"./js/app",
+        vendor:['vue']
+    },
     output:{
         filename:"./js/bundle.js"
     },
@@ -44,7 +47,8 @@ module.exports = {
             compress: {
                 warnings: false
             }
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendor',  './js/vendor.js')
     ],
     postcss:[
         autoprefixer({
