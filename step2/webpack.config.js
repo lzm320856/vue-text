@@ -2,6 +2,7 @@
  * Created by zm on 2017/1/10.
  */
 var autoprefixer = require('autoprefixer');
+var webpack = require('webpack');
 
 module.exports = {
     entry: "./js/app.js",
@@ -26,6 +27,10 @@ module.exports = {
             {
                 test:/\.(woff|svg|eot|ttf)\??.*$/,
                 loader:'url-loader?name=fonts/[name].[md5:hash:hex:7].[ext]'
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url?limit=8192'
             }
         ]
     },
@@ -34,6 +39,13 @@ module.exports = {
             'vue$': 'vue/dist/vue.common.js'
         }
     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ],
     postcss:[
         autoprefixer({
             browsers:['last 3 versions']
