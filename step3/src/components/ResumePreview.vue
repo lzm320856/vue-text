@@ -1,9 +1,12 @@
 <template>
     <div id="resumePreview">
-        <div>this is ResumePreview</div>
+
     </div>
 </template>
 <style>
+  #resumPreview{
+    display:flex;
+  }
 
 </style>
 <script>

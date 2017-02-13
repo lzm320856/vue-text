@@ -1,15 +1,12 @@
 <template>
     <div id="topBar">
         <div class="wrap">
-            <span class="logo">Resume</span>
+            <span class="logo">Resumer</span>
+            <span class="btn">保存</span>
         </div>
     </div>
 </template>
 <style>
-    #topBar{
-        background:#fff;
-        box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
-    }
     #topBar>.wrap{
         display:flex;
         justify-content:space-between;
@@ -21,10 +18,19 @@
         height:60px;
     }
     #topBar .logo{
-        font-size:24px;
         font-family:Arial;
-        font-weight:bold;
-        color:#333;
+        font-size:24px;
+        color:#000000;
+        letter-spacing:0;
+    }
+    #topBar .btn{
+        font-size:20px;
+        color:#fff;
+        text-align:center;
+        line-height:32px;
+        background:#02af5f;
+        width:72px;
+        height:32px;
     }
 </style>
 <script>

@@ -37,6 +37,10 @@ export default {
      display: flex;
      flex-direction: column;
    }
+   .page #topBar{
+        background:#fff;
+        box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
+    }
    .page>main{
      flex-grow: 1;
    }
@@ -44,7 +48,7 @@ export default {
    .page>main{
      min-width: 1024px;
      max-width: 1440px;
-     margin: 10px 0;
+     margin: 16px 0;
      padding:0 16px;
      display: flex;
      justify-content: space-between;
