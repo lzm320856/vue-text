@@ -1,45 +1,57 @@
 
-body{
-   background:#ccc;
+body {
+  background: #ccc;
 }
-.page{
+svg.icon {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  vertical-align: -0.1em;
+  font-size: 16px;
+}
+.page {
   height: 100vh;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
 }
-.page>main{
+.page #topBar {
+  background: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+}
+.page main {
   -ms-flex-positive: 1;
       flex-grow: 1;
-}
-.page>main{
   min-width: 1024px;
   max-width: 1440px;
-  margin: 10px 0;
-  padding:0 16px;
+  margin: 16px 0;
+  padding: 0 16px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  width:100%;
-  -ms-flex-item-align:center;
-      align-self:center;
+  width: 100%;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
-#resumeEditor{
-  background:#fff;
+.page #resumeEditor {
+  background: #fff;
   width: 35%;
 }
-#resumePreview{
-  background:#fff;
-  -ms-flex-positive:1;
-      flex-grow:1;
-  margin-left:16px;
+.page #resumePreview {
+  background: #fff;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  margin-left: 16px;
 }
 *{
   padding:0;
   margin: 0;
   box-sizing: border-box;
+}
+li{
+  list-style: none;
 }
 *:after,*:before{
   box-sizing: border-box;
@@ -506,42 +518,122 @@ template {
   display: none;
 }
 
-#topBar{
-    background:#fff;
-    box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
+#topBar .wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  min-width: 1024px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 60px;
 }
-#topBar>.wrap{
-    display:-ms-flexbox;
-    display:flex;
-    -ms-flex-pack:justify;
-        justify-content:space-between;
-    -ms-flex-align:center;
-        align-items:center;
-    min-width:1024px;
-    max-width:1440px;
-    margin:0 auto;
-    padding:0 16px;
-    height:60px;
+#topBar .wrap .logo {
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: 0;
 }
-#topBar .logo{
-    font-size:24px;
-    font-family:Arial;
-    font-weight:bold;
-    color:#333;
+#topBar .wrap .title-option .btn {
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  line-height: 32px;
+  width: 72px;
+  height: 32px;
+  cursor: pointer;
+}
+#topBar .wrap .title-option .btn-green {
+  color: #fff;
+  background: #02af5f;
+}
+#topBar .wrap .title-option .btn-gray {
+  color: #000;
+  background: #ddd;
+}
+
+#resumeEditor {
+  display: -ms-flexbox;
+  display: flex;
+}
+#resumeEditor .UIColumn {
+  color: #fff;
+  width: 20%;
+  background: #1f2126;
+}
+#resumeEditor .UIColumn .active {
+  background: #fff;
+  color: #1f2126;
+}
+#resumeEditor .UIColumn nav {
+  margin-top: 12px;
+}
+#resumeEditor .UIColumn nav li:hover {
+  background: #fff;
+}
+#resumeEditor .UIColumn nav li:hover .icon {
+  color: #1f2126;
+}
+#resumeEditor .UIColumn nav li {
+  padding: 16px 0;
+}
+#resumeEditor .UIColumn nav li .icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto;
+  font-size: 28px;
+}
+#resumeEditor .inputColumn {
+  overflow-y: scroll;
+  width: 80%;
+  padding: 8px 23px;
+  font-size: 20px;
+  color: #666;
+}
+#resumeEditor .inputColumn .form-group {
+  margin-top: 16px;
+}
+#resumeEditor .inputColumn .form-group input {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: 0;
+}
+#resumeEditor .inputColumn .form-group input:focus {
+  border: 1px solid #666;
+  box-shadow: 0 0 1px 1px #666;
+}
+#resumeEditor .inputColumn .subItem hr {
+  margin: 20px auto;
+}
+#resumeEditor .inputColumn .btn {
+  font-size: 20px;
+  text-align: center;
+  line-height: 32px;
+  width: 72px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  background: #1f2126;
+}
+#resumeEditor .inputColumn .btn:hover {
+  color: #1f2126;
+  background: #fff;
+  border: 2px solid #1f2126;
+}
+
+#resumPreview{
+  display:-ms-flexbox;
+  display:flex;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*# sourceMappingURL=app.d6d5815969d57f600593bb7524baf52f.css.map*/
+/*# sourceMappingURL=app.989a43bf4c01e0bc96e5a9f957bed33d.css.map*/

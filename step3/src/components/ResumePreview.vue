@@ -1,6 +1,5 @@
 <template>
     <div id="resumePreview">
-
     </div>
 </template>
 <style>
