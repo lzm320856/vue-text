@@ -16,7 +16,7 @@
             justify-content:space-between;
             align-items:center;
             min-width:1024px;
-            max-width:1440px;
+            max-width: 1440px;
             margin:0 auto;
             padding:0 16px;
             height:60px;

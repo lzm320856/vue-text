@@ -14,7 +14,8 @@
 import './assets/reset.css'
 import 'normalize.css/normalize.css'
 
-import icons from './assets/icons'
+import icons from './assets/icons';
+import store from './store/index';
 import Topbar from './components/Topbar';
 import ResumeEditor from './components/ResumeEditor';
 import ResumePreview from './components/ResumePreview';
@@ -22,6 +23,7 @@ import ResumePreview from './components/ResumePreview';
 
 export default {
   name: 'app',
+  store,
   components: {
     Topbar,ResumeEditor,ResumePreview
   },
@@ -33,43 +35,42 @@ export default {
 
 <style lang="less">
     body{
-      background:#ccc;
+        background:#ccc;
     }
     svg.icon{
-      height: 1em;
-      width: 1em;
-      fill: currentColor;
-      vertical-align:  -0.1em;
-      font-size: 16px;
+        height: 1em;
+        width: 1em;
+        fill: currentColor;
+        vertical-align:  -0.1em;
+        font-size: 16px;
     }
     .page{
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      #topBar{
-        background:#fff;
-        box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
-      }
-      main{
-        flex-grow: 1;
-        min-width: 1024px;
-        max-width: 1440px;
-        margin: 16px 0;
-        padding:0 16px;
+        height: 100vh;
         display: flex;
-        justify-content: space-between;
-        width:100%;
-        align-self:center;
-      }
-      #resumeEditor{
-        background:#fff;
-        width: 35%;
-      }
-      #resumePreview{
-        background:#fff;
-        flex-grow:1;
-        margin-left:16px;
-      }
+        flex-direction: column;
+        #topBar{
+            background:#fff;
+            box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
+        }
+        main{
+            flex-grow: 1;
+            min-width: 1024px;
+            max-width: 1440px;
+            margin: 16px 0;
+            padding:0 16px;
+            display: flex;
+            justify-content: space-between;
+            width:100%;
+            align-self:center;
+        }
+        #resumeEditor{
+            background:#fff;
+            width: 35%;
+        }
+        #resumePreview{
+            background:#fff;
+            flex-grow: 1;
+            margin-left:16px;
+        }
     }
-
 </style>
