@@ -557,6 +557,7 @@ template {
 #resumeEditor {
   display: -ms-flexbox;
   display: flex;
+  min-width: 35%;
 }
 #resumeEditor .UIColumn {
   color: #fff;
@@ -612,7 +613,12 @@ template {
 #resumeEditor .inputColumn .subItem hr {
   margin: 20px auto;
 }
-#resumeEditor .inputColumn .btn {
+#resumeEditor .inputColumn .option-btn {
+  display: -ms-flexbox;
+  display: flex;
+}
+#resumeEditor .inputColumn .option-btn .btn {
+  display: inline-block;
   font-size: 20px;
   text-align: center;
   line-height: 32px;
@@ -624,16 +630,67 @@ template {
   color: #fff;
   background: #1f2126;
 }
-#resumeEditor .inputColumn .btn:hover {
+#resumeEditor .inputColumn .option-btn .btn:hover {
   color: #1f2126;
   background: #fff;
   border: 2px solid #1f2126;
 }
 
-#resumPreview{
-  display:-ms-flexbox;
-  display:flex;
+#resumePreview {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#resumePreview .personal-info {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  background: #333;
+  color: #fff;
+}
+#resumePreview .personal-info .main-wraps {
+  margin-left: 10%;
+  min-height: 150px;
+}
+#resumePreview .personal-info .side-wraps {
+  margin-top: 2.5%;
+  margin-left: 10%;
+  letter-spacing: .3em;
+  line-height: 1.5em;
+}
+#resumePreview .item {
+  position: relative;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  margin: 30px 0;
+  width: 100%;
+}
+#resumePreview .item h3 {
+  color: #333;
+  position: absolute;
+  margin-top: -10px;
+  left: 10%;
+  background: #fff;
+}
+#resumePreview .item ol {
+  width: 100%;
+}
+#resumePreview .item ol li {
+  width: 100%;
+  margin: 10px 0;
+}
+#resumePreview .item ol li .title {
+  display: inline-block;
+  margin-left: 8%;
+  width: 15%;
+}
+#resumePreview .item ol li .content {
+  display: inline-block;
+  margin-left: 5%;
+  width: 50%;
+  white-space: pre-line;
+}
+#resumePreview .item ol li .content span {
+  margin-left: 15%;
 }
 
-
-/*# sourceMappingURL=app.989a43bf4c01e0bc96e5a9f957bed33d.css.map*/
+/*# sourceMappingURL=app.86c004437f8789f78834cf42861be8c3.css.map*/
